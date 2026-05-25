@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, MessageCircle, X } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '../lib/constants'
+import { Check, X } from 'lucide-react'
 
 type SuccessModalProps = {
   open: boolean
@@ -56,16 +55,6 @@ export function SuccessModal({ open, reference, onClose }: SuccessModalProps) {
             <p className="mt-6 text-sm leading-relaxed text-muted">
               We will call you within 2 hours to confirm your Kasai
             </p>
-
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-base font-semibold text-white transition-opacity hover:opacity-90"
-            >
-              <MessageCircle className="h-5 w-5" />
-              Chat on WhatsApp
-            </a>
           </motion.div>
         </motion.div>
       )}

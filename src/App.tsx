@@ -7,7 +7,6 @@ import { HowItWorks } from './components/HowItWorks'
 import { Navbar } from './components/Navbar'
 import { SuccessModal } from './components/SuccessModal'
 import { TrustSection } from './components/TrustSection'
-import { WhatsAppButton } from './components/WhatsAppButton'
 import type { AnimalType } from './lib/constants'
 
 function scrollTo(id: string) {
@@ -46,7 +45,6 @@ export default function App() {
         />
       </main>
       <Footer />
-      <WhatsAppButton />
       <SuccessModal
         open={modalOpen}
         reference={reference}

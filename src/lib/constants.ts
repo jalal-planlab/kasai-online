@@ -1,8 +1,8 @@
 export const EID_DATE = new Date(2026, 4, 27, 0, 0, 0)
-export const WHATSAPP_NUMBER = '923001234567'
-export const WHATSAPP_DISPLAY = '03XX-XXXXXXX'
 
 export type AnimalType = 'bakra' | 'bachra' | 'dumba' | 'oont'
+
+export const BOOKING_CITY = 'Lahore' as const
 
 export const ANIMALS: {
   id: AnimalType
@@ -12,6 +12,7 @@ export const ANIMALS: {
   description: string
   time: string
   price: string
+  priceAmount: number
   tag?: string
 }[] = [
   {
@@ -21,7 +22,8 @@ export const ANIMALS: {
     emoji: '🐐',
     description: 'Small Animal — Perfect for a Single Family',
     time: '~1.5 to 2 hours',
-    price: 'PKR 3,000',
+    price: 'PKR 8,000',
+    priceAmount: 8000,
     tag: 'Most Popular',
   },
   {
@@ -31,7 +33,8 @@ export const ANIMALS: {
     emoji: '🐄',
     description: 'Medium Animal — Great for Joint Families',
     time: '~2 to 3 hours',
-    price: 'PKR 6,000',
+    price: 'PKR 12,000',
+    priceAmount: 12000,
   },
   {
     id: 'dumba',
@@ -40,7 +43,8 @@ export const ANIMALS: {
     emoji: '🐑',
     description: 'Premium Sheep — Sunnah Choice',
     time: '~1.5 to 2 hours',
-    price: 'PKR 4,500',
+    price: 'PKR 10,000',
+    priceAmount: 10000,
     tag: 'Premium',
   },
   {
@@ -50,10 +54,19 @@ export const ANIMALS: {
     emoji: '🐪',
     description: 'Large Animal — For Big Gatherings',
     time: '~4 to 5 hours',
-    price: 'PKR 15,000',
+    price: 'PKR 18,000',
+    priceAmount: 18000,
     tag: 'Special Arrangement',
   },
 ]
+
+export const ANIMAL_BY_ID = Object.fromEntries(
+  ANIMALS.map((animal) => [animal.id, animal]),
+) as Record<AnimalType, (typeof ANIMALS)[number]>
+
+export function formatPKR(amount: number): string {
+  return `PKR ${amount.toLocaleString('en-PK')}`
+}
 
 export const CITIES = [
   'Karachi',
@@ -67,16 +80,54 @@ export const CITIES = [
 ] as const
 
 export const EID_DAYS = [
-  { value: '2026-05-27', label: '27 May', sublabel: 'Eid Day 1' },
-  { value: '2026-05-28', label: '28 May', sublabel: 'Day 2' },
-  { value: '2026-05-29', label: '29 May', sublabel: 'Day 3' },
+  {
+    value: '2026-05-27',
+    label: '27 May',
+    sublabel: 'Eid Day 1',
+    priceNote: 'Peak pricing (+35%)',
+    isPeak: true,
+  },
+  {
+    value: '2026-05-28',
+    label: '28 May',
+    sublabel: 'Day 2',
+    priceNote: 'High demand (+15%)',
+  },
+  {
+    value: '2026-05-29',
+    label: '29 May',
+    sublabel: 'Day 3',
+    priceNote: 'Standard rate',
+  },
 ] as const
 
 export const TIME_SLOTS = [
-  { value: 'early', label: 'Early Morning', sublabel: '5am – 8am' },
-  { value: 'morning', label: 'Morning', sublabel: '8am – 11am' },
-  { value: 'afternoon', label: 'Afternoon', sublabel: '11am – 2pm' },
-  { value: 'evening', label: 'Evening', sublabel: '2pm – 5pm' },
+  {
+    value: 'early',
+    label: 'Early Morning',
+    sublabel: '5am – 8am',
+    priceNote: 'Premium (+25%)',
+    isMorning: true,
+  },
+  {
+    value: 'morning',
+    label: 'Morning',
+    sublabel: '8am – 11am',
+    priceNote: 'Premium (+20%)',
+    isMorning: true,
+  },
+  {
+    value: 'afternoon',
+    label: 'Afternoon',
+    sublabel: '11am – 2pm',
+    priceNote: 'Standard rate',
+  },
+  {
+    value: 'evening',
+    label: 'Evening',
+    sublabel: '2pm – 5pm',
+    priceNote: 'Off-peak (-5%)',
+  },
 ] as const
 
 export const sectionVariants = {

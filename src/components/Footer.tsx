@@ -1,5 +1,5 @@
 import { Moon } from 'lucide-react'
-import { CITIES, WHATSAPP_DISPLAY } from '../lib/constants'
+import { CITIES } from '../lib/constants'
 
 const quickLinks = [
   { href: '#how-it-works', label: 'How It Works' },
@@ -48,10 +48,6 @@ export function Footer() {
           </h3>
           <p className="mt-4 text-sm leading-relaxed text-muted">
             {CITIES.filter((c) => c !== 'Other').join(' · ')} & more
-          </p>
-          <p className="mt-4 text-sm text-muted">
-            WhatsApp:{' '}
-            <span className="font-medium text-text">{WHATSAPP_DISPLAY}</span>
           </p>
         </div>
       </div>
