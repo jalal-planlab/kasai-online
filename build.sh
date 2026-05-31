@@ -8,8 +8,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-IMAGE_NAME="finance-fe"
-CONTAINER_NAME="finance-fe-container"
+IMAGE_NAME="kasai-fe"
+CONTAINER_NAME="kasai-fe-container"
 PORT="${PORT:-7001}"
 ENV_FILE=".env"
 

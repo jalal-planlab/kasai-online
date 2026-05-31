@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package files first for better layer caching
 COPY package.json package-lock.json ./
 
-# Install dependencies with clean install
-RUN npm ci --only=production=false && \
+# Install all dependencies (including dev) for the Vite build
+RUN npm ci && \
     npm cache clean --force
 
 # Copy the rest of the application code
